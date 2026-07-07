@@ -1,157 +1,133 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
-import { Save, AlertCircle } from 'lucide-react';
+import React, { useState, Suspense } from 'react';
+import { Eye, EyeOff, Lock, Mail, User, ArrowRight } from 'lucide-react';
 
-export default function CadastroTurma() {
-  const router = useRouter();
-  const [numeroTurma, setNumeroTurma] = useState('');
-  const [dataInicio, setDataInicio] = useState('');
-  const [diasTreinamento, setDiasTreinamento] = useState(12);
-  const [diasAlo, setDiasAlo] = useState(3);
+// Criamos o formulário separadamente
+function CadastroForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // Motor Inteligente de Projeção Cronológica Corporativa
-  const calcularDataFim = (start: string, tDays: number, aDays: number): string => {
-    if (!start) return '';
-    let dataAtual = new Date(start + 'T00:00:00');
-    let totalDiasUteisNecessarios = tDays + aDays;
-    let diasContados = 0;
-
-    // Percorre o calendário pulando os finais de semana (Sábado/Domingo)
-    while (diasContados < totalDiasUteisNecessarios) {
-      if (diasContados > 0) {
-        dataAtual.setDate(dataAtual.getDate() + 1);
-      }
-      const diaSemana = dataAtual.getDay();
-      if (diaSemana !== 0 && diaSemana !== 6) { // 0 = Domingo, 6 = Sábado
-        diasContados++;
-      } else if (diasContados === 0) {
-        // Se a data de início cair no fim de semana, move para a próxima segunda antes de iniciar o fluxo
-        dataAtual.setDate(dataAtual.getDate() + (diaSemana === 0 ? 1 : 2));
-      }
-    }
-    return dataAtual.toISOString().split('T')[0];
-  };
-
-  const dataFimCalculada = calcularDataFim(dataInicio, diasTreinamento, diasAlo);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setMessage(null);
 
-    const { data: userSession } = await supabase.auth.getSession();
-
-    const { data, error } = await supabase.from('turmas').insert({
-      numero_turma: numeroTurma,
-      operacao_id: '8af6869a-7a5b-4c2a-9f5e-bd2999cb5107', // Mock ID para fluxo isolado
-      analista_id: 'a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d',
-      instrutor_id: 'f6e5d4c3-b2a1-0f9e-8d7c-6b5a4b3c2d1e',
-      data_inicio: dataInicio,
-      data_fim: dataFimCalculada,
-      dias_treinamento: diasTreinamento,
-      dias_alo: diasAlo,
-      status: 'Em Andamento',
-      user_criador: userSession?.session?.user.id
-    }).select().single();
-
-    if (error) {
-      alert(`Erro ao cadastrar turma: ${error.message}`);
+    try {
+      // Aqui você pode plugar a sua lógica do Supabase futuramente, ex:
+      // const { error } = await supabase.auth.signUp({ email, password, options: { data: { name } } })
+      
+      setMessage({ type: 'success', text: 'Cadastro simulado com sucesso!' });
+    } catch (err) {
+      setMessage({ type: 'error', text: 'Ocorreu um erro ao criar a conta.' });
+    } finally {
       setLoading(false);
-      return;
     }
-
-    // GERAÇÃO AUTOMÁTICA DO DIÁRIO DE CHAMADA (Exemplo estrutural)
-    // Em produção, isso pode ser feito em lote aqui ou via DB Trigger
-    alert('Turma e cronograma de diários criados com sucesso!');
-    router.push('/turmas');
   };
 
   return (
-    <div className="p-6 lg:p-8 max-w-4xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm mt-10">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Abertura de Nova Turma</h2>
-        <p className="text-slate-500 dark:text-slate-400 text-sm">O cronograma final de acompanhamento é projetado automaticamente excluindo folgas regulamentares.</p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Código Identificador da Turma</label>
-            <input
-              type="text"
-              required
-              value={numeroTurma}
-              onChange={(e) => setNumeroTurma(e.target.value)}
-              placeholder="Ex: TURMA-2026-07A"
-              className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border rounded-xl"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Data de Admissão / Início</label>
-            <input
-              type="date"
-              required
-              value={dataInicio}
-              onChange={(e) => setDataInicio(e.target.value)}
-              className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border rounded-xl"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Dias de Treinamento Técnico</label>
-            <input
-              type="number"
-              value={diasTreinamento}
-              onChange={(e) => setDiasTreinamento(Number(e.target.value))}
-              className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border rounded-xl"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Dias de Acompanhamento Alô</label>
-            <input
-              type="number"
-              value={diasAlo}
-              onChange={(e) => setDiasAlo(Number(e.target.value))}
-              className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-800 border rounded-xl"
-            />
-          </div>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Criar sua conta
+          </h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Monitore o presenteísmo e melhore a produtividade
+          </p>
         </div>
+        
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          {message && (
+            <div className={`p-4 rounded-md text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+              {message.text}
+            </div>
+          )}
 
-        {dataFimCalculada && (
-          <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-xl border border-blue-200 dark:border-blue-900/50 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+          <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-300">Cálculo de Encerramento Automatizado</h4>
-              <p className="text-xs text-blue-700 dark:text-blue-400 mt-0.5">
-                Considerando os {diasTreinamento + diasAlo} dias úteis, o encerramento desta turma ocorrerá em: <strong className="underline">{dataFimCalculada.split('-').reverse().join('/')}</strong>.
-              </p>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <User size={18} />
+                </div>
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="appearance-none rounded-lg relative block w-full pl-10 pr-3 py-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Nome Completo"
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <Mail size={18} />
+                </div>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="appearance-none rounded-lg relative block w-full pl-10 pr-3 py-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="E-mail"
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <Lock size={18} />
+                </div>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="appearance-none rounded-lg relative block w-full pl-10 pr-10 py-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Senha"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
             </div>
           </div>
-        )}
 
-        <div className="flex justify-end gap-3 pt-4 border-t">
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="px-5 py-2.5 border rounded-xl text-sm font-semibold hover:bg-slate-50"
-          >
-            Cancelar
-          </button>
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-5 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-semibold hover:bg-blue-700 shadow-md flex items-center gap-2"
-          >
-            <Save className="w-4 h-4" />
-            {loading ? 'Processando...' : 'Salvar Turma'}
-          </button>
-        </div>
-      </form>
+          <div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="group relative w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 transition-colors"
+            >
+              {loading ? 'Criando conta...' : 'Registrar'}
+              <span className="absolute right-3 inset-y-0 flex items-center">
+                <ArrowRight size={16} className="text-indigo-200 group-hover:text-white" />
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  );
+}
+
+// O segredo do build: Exportamos a página envelopada em um escudo de <Suspense>
+export default function CadastroPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Carregando formulário...</div>}>
+      <CadastroForm />
+    </Suspense>
   );
 }
