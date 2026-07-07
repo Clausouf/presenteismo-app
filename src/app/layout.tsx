@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css"; // Certifique-se de que seu arquivo de estilos está na mesma pasta
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Presenteísmo App",
