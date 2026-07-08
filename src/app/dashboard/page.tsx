@@ -56,13 +56,19 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
-      {/* Componentes de layout lateral e superior seriam chamados aqui */}
-      <main className="flex-1 p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
+   <div className="flex justify-between items-start w-full">
         <div>
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Indicadores Gerenciais</h1>
           <p className="text-slate-500 dark:text-slate-400 mt-1">Acompanhamento operacional de T&D e R&S em tempo real.</p>
         </div>
+        
+        <button 
+          onClick={handleLogout}
+          className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors shadow-sm"
+        >
+          Sair do Sistema
+        </button>
+      </div>
 
         {/* CARDS INDICADORES */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
