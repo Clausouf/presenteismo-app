@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { useRouter } from 'next/navigation'; // <-- ADICIONE APENAS ESSA LINHA AQUI!
+import { useRouter } from 'next/navigation';
+import Link from 'next/link'; // <-- ADICIONE APENAS ESTA LINHA AQUI!
 import { BarChart3, Users, ClipboardList, Calendar, AlertTriangle, CheckCircle, TrendingUp } from 'lucide-react';
 
 export default function DashboardPage() {
@@ -56,19 +57,46 @@ export default function DashboardPage() {
   };
 
   return (
-   <div className="flex justify-between items-start w-full">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Indicadores Gerenciais</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">Acompanhamento operacional de T&D e R&S em tempo real.</p>
+    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
+      
+      {/* MENU LATERAL DE ABAS */}
+      <aside className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 p-4 space-y-2">
+        <div className="mb-6 px-2">
+          <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Navegação</h2>
         </div>
         
-        <button 
-          onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors shadow-sm"
-        >
-          Sair do Sistema
-        </button>
-      </div>
+        <nav className="space-y-1">
+          <Link href="/dashboard" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium text-sm">
+            <span>📊 Dashboard</span>
+          </Link>
+          
+          <Link href="/cadastro" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
+            <span>📝 Cadastros / Turmas</span>
+          </Link>
+
+          <Link href="/turmas/teste/diario" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
+            <span>📔 Diário de Bordo</span>
+          </Link>
+        </nav>
+      </aside>
+
+      {/* CONTEÚDO PRINCIPAL (DASHBOARD) */}
+      <main className="flex-1 p-6 lg:p-8 max-w-7xl mx-auto space-y-8">
+        
+        {/* TOPO COM TÍTULO E BOTÃO DE SAIR */}
+        <div className="flex justify-between items-start w-full">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Indicadores Gerenciais</h1>
+            <p className="text-slate-500 dark:text-slate-400 mt-1">Acompanhamento operacional de T&D e R&S em tempo real.</p>
+          </div>
+          
+          <button 
+            onClick={handleLogout}
+            className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors shadow-sm"
+          >
+            Sair do Sistema
+          </button>
+        </div>
 
         {/* CARDS INDICADORES */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
