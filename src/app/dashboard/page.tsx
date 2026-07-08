@@ -2,9 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import { useRouter } from 'next/navigation'; // <-- ADICIONE APENAS ESSA LINHA AQUI!
 import { BarChart3, Users, ClipboardList, Calendar, AlertTriangle, CheckCircle, TrendingUp } from 'lucide-react';
 
 export default function DashboardPage() {
+  const router = useRouter();
+
+  async function handleLogout() {
+    await supabase.auth.signOut(); // Avisa o Supabase que o usuário deslogou
+    router.push('/');             // Redireciona de volta para a tela de login (raiz do site)
+  }
   const [metrics, setMetrics] = useState({
     turmasAndamento: 0,
     turmasFinalizadas: 0,
