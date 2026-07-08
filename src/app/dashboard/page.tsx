@@ -70,12 +70,12 @@ export default function DashboardPage() {
         <span>📊 Dashboard</span>
       </Link>
       
-      <Link href="/cadastro" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
-        <span>📝 Cadastros / Turmas</span>
+      <Link href="/turmas" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
+        <span>📝 Turmas</span>
       </Link>
 
       <Link href="/turmas/teste/diario" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
-        <span>📔 Diário de Bordo</span>
+        <span>📔 Diário de presenças</span>
       </Link>
 
       {/* NOVO LINK DO CALENDÁRIO ADICIONADO AQUI */}
