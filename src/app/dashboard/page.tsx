@@ -65,19 +65,24 @@ export default function DashboardPage() {
           <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Navegação</h2>
         </div>
         
-        <nav className="space-y-1">
-          <Link href="/dashboard" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium text-sm">
-            <span>📊 Dashboard</span>
-          </Link>
-          
-          <Link href="/cadastro" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
-            <span>📝 Cadastros / Turmas</span>
-          </Link>
+<nav className="space-y-1">
+      <Link href="/dashboard" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 font-medium text-sm">
+        <span>📊 Dashboard</span>
+      </Link>
+      
+      <Link href="/cadastro" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
+        <span>📝 Cadastros / Turmas</span>
+      </Link>
 
-          <Link href="/turmas/teste/diario" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
-            <span>📔 Diário de Bordo</span>
-          </Link>
-        </nav>
+      <Link href="/turmas/teste/diario" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
+        <span>📔 Diário de Bordo</span>
+      </Link>
+
+      {/* NOVO LINK DO CALENDÁRIO ADICIONADO AQUI */}
+      <Link href="/calendario" className="flex items-center space-x-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium text-sm transition-colors">
+        <span>📅 Calendário</span>
+      </Link>
+    </nav>
       </aside>
 
       {/* CONTEÚDO PRINCIPAL (DASHBOARD) */}
