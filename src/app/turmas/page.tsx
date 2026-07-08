@@ -86,7 +86,7 @@ export default function TurmasPage() {
     try {
       const { error } = await supabase.from('turmas').insert([{
         numero_turma: numeroTurma.trim().toUpperCase(),
-        nome_operacao: operacaoSelecionacao,
+        nome_operacao: operacaoSelecionada,
         instrutor_analista_matricula: responsavelSelecionado,
         data_inicio: dataInicio || null,
         data_primeiro_alo: dataPrimeiroAlo || null,
