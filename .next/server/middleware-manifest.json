@@ -1,0 +1,228 @@
+{
+  "version": 3,
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge-runtime-webpack.js",
+        "server/src/middleware.js"
+      ],
+      "name": "src/middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/dashboard(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json|\\.rsc|\\.segments\\/.+\\.segment\\.rsc)?[\\/#\\?]?$",
+          "originalSource": "/dashboard/:path*"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/turmas(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json|\\.rsc|\\.segments\\/.+\\.segment\\.rsc)?[\\/#\\?]?$",
+          "originalSource": "/turmas/:path*"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/admin(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json|\\.rsc|\\.segments\\/.+\\.segment\\.rsc)?[\\/#\\?]?$",
+          "originalSource": "/admin/:path*"
+        },
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/login(\\.json|\\.rsc|\\.segments\\/.+\\.segment\\.rsc)?[\\/#\\?]?$",
+          "originalSource": "/login"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "qLaNBQKhb1BvT6Zo9Yu4A",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "FvnyBC8z8kWjMHxKJq0EkujPD5RaPDNA5zXeZTkxGVE=",
+        "__NEXT_PREVIEW_MODE_ID": "93bf05d92d537266bde520b00a9ce397",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "013c59d8a6f22d40ca36048cae3ab5810c573f3274bc9f1a64317d0379aac44e",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5a09ac12c02195d964c3b958eefc4d86d0e8aeaeab2aba5171e2a7a3e1d12085"
+      }
+    }
+  },
+  "functions": {
+    "/calendario/page": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/calendario/page_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/253.js",
+        "server/app/calendario/page.js"
+      ],
+      "name": "app/calendario/page",
+      "page": "/calendario/page",
+      "matchers": [
+        {
+          "regexp": "^/calendario$",
+          "originalSource": "/calendario"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "qLaNBQKhb1BvT6Zo9Yu4A",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "FvnyBC8z8kWjMHxKJq0EkujPD5RaPDNA5zXeZTkxGVE=",
+        "__NEXT_PREVIEW_MODE_ID": "93bf05d92d537266bde520b00a9ce397",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "013c59d8a6f22d40ca36048cae3ab5810c573f3274bc9f1a64317d0379aac44e",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5a09ac12c02195d964c3b958eefc4d86d0e8aeaeab2aba5171e2a7a3e1d12085"
+      }
+    },
+    "/colaboradores/page": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/colaboradores/page_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/253.js",
+        "server/edge-chunks/453.js",
+        "server/app/colaboradores/page.js"
+      ],
+      "name": "app/colaboradores/page",
+      "page": "/colaboradores/page",
+      "matchers": [
+        {
+          "regexp": "^/colaboradores$",
+          "originalSource": "/colaboradores"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "qLaNBQKhb1BvT6Zo9Yu4A",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "FvnyBC8z8kWjMHxKJq0EkujPD5RaPDNA5zXeZTkxGVE=",
+        "__NEXT_PREVIEW_MODE_ID": "93bf05d92d537266bde520b00a9ce397",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "013c59d8a6f22d40ca36048cae3ab5810c573f3274bc9f1a64317d0379aac44e",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5a09ac12c02195d964c3b958eefc4d86d0e8aeaeab2aba5171e2a7a3e1d12085"
+      }
+    },
+    "/configuracoes/page": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/configuracoes/page_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/253.js",
+        "server/edge-chunks/453.js",
+        "server/app/configuracoes/page.js"
+      ],
+      "name": "app/configuracoes/page",
+      "page": "/configuracoes/page",
+      "matchers": [
+        {
+          "regexp": "^/configuracoes$",
+          "originalSource": "/configuracoes"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "qLaNBQKhb1BvT6Zo9Yu4A",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "FvnyBC8z8kWjMHxKJq0EkujPD5RaPDNA5zXeZTkxGVE=",
+        "__NEXT_PREVIEW_MODE_ID": "93bf05d92d537266bde520b00a9ce397",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "013c59d8a6f22d40ca36048cae3ab5810c573f3274bc9f1a64317d0379aac44e",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5a09ac12c02195d964c3b958eefc4d86d0e8aeaeab2aba5171e2a7a3e1d12085"
+      }
+    },
+    "/turmas/nova/page": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/turmas/nova/page_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/253.js",
+        "server/app/turmas/nova/page.js"
+      ],
+      "name": "app/turmas/nova/page",
+      "page": "/turmas/nova/page",
+      "matchers": [
+        {
+          "regexp": "^/turmas/nova$",
+          "originalSource": "/turmas/nova"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "qLaNBQKhb1BvT6Zo9Yu4A",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "FvnyBC8z8kWjMHxKJq0EkujPD5RaPDNA5zXeZTkxGVE=",
+        "__NEXT_PREVIEW_MODE_ID": "93bf05d92d537266bde520b00a9ce397",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "013c59d8a6f22d40ca36048cae3ab5810c573f3274bc9f1a64317d0379aac44e",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5a09ac12c02195d964c3b958eefc4d86d0e8aeaeab2aba5171e2a7a3e1d12085"
+      }
+    },
+    "/turmas/[numero_turma]/diario/page": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/turmas/[numero_turma]/diario/page_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/253.js",
+        "server/app/turmas/[numero_turma]/diario/page.js"
+      ],
+      "name": "app/turmas/[numero_turma]/diario/page",
+      "page": "/turmas/[numero_turma]/diario/page",
+      "matchers": [
+        {
+          "regexp": "^/turmas/(?<numero_turma>[^/]+?)/diario$",
+          "originalSource": "/turmas/[numero_turma]/diario"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "qLaNBQKhb1BvT6Zo9Yu4A",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "FvnyBC8z8kWjMHxKJq0EkujPD5RaPDNA5zXeZTkxGVE=",
+        "__NEXT_PREVIEW_MODE_ID": "93bf05d92d537266bde520b00a9ce397",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "013c59d8a6f22d40ca36048cae3ab5810c573f3274bc9f1a64317d0379aac44e",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5a09ac12c02195d964c3b958eefc4d86d0e8aeaeab2aba5171e2a7a3e1d12085"
+      }
+    },
+    "/turmas/page": {
+      "files": [
+        "server/server-reference-manifest.js",
+        "server/app/turmas/page_client-reference-manifest.js",
+        "server/middleware-build-manifest.js",
+        "server/middleware-react-loadable-manifest.js",
+        "server/next-font-manifest.js",
+        "server/interception-route-rewrite-manifest.js",
+        "server/edge-runtime-webpack.js",
+        "server/edge-chunks/253.js",
+        "server/edge-chunks/453.js",
+        "server/app/turmas/page.js"
+      ],
+      "name": "app/turmas/page",
+      "page": "/turmas/page",
+      "matchers": [
+        {
+          "regexp": "^/turmas$",
+          "originalSource": "/turmas"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "qLaNBQKhb1BvT6Zo9Yu4A",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "FvnyBC8z8kWjMHxKJq0EkujPD5RaPDNA5zXeZTkxGVE=",
+        "__NEXT_PREVIEW_MODE_ID": "93bf05d92d537266bde520b00a9ce397",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "013c59d8a6f22d40ca36048cae3ab5810c573f3274bc9f1a64317d0379aac44e",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "5a09ac12c02195d964c3b958eefc4d86d0e8aeaeab2aba5171e2a7a3e1d12085"
+      }
+    }
+  },
+  "sortedMiddleware": [
+    "/"
+  ]
+}

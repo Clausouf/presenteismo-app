@@ -1,0 +1,14 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/cadastro/page": "app/cadastro/page.js",
+  "/criar-adm/page": "app/criar-adm/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/calendario/page": "app/calendario/page.js",
+  "/colaboradores/page": "app/colaboradores/page.js",
+  "/configuracoes/page": "app/configuracoes/page.js",
+  "/turmas/nova/page": "app/turmas/nova/page.js",
+  "/turmas/[numero_turma]/diario/page": "app/turmas/[numero_turma]/diario/page.js",
+  "/turmas/page": "app/turmas/page.js"
+}
