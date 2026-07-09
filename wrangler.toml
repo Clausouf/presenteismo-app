@@ -1,2 +1,6 @@
 name = "presenteismo-app"
 pages_build_output_dir = ".vercel/output/static"
+
+[compatibility_flags]
+compatibility_date = "2026-07-09"
+compatibility_flags = [ "nodejs_compat" ]
